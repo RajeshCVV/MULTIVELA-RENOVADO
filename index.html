@@ -62,8 +62,12 @@
              │  (PNG con canal alfa) para que se vea sobre el negro.   │
              │  Altura recomendada: 36–44px.                           │
              └─────────────────────────────────────────────────────────┘ -->
-        <a href="#hero" class="nav-logo" aria-label="Inicio Multivela Studio">
-            MULTI<span>VELA</span>
+        <!-- LOGO: Imagen real de Multivela Studio con fondo blanco
+             Para que se vea mejor sobre el negro, puedes usar la versión
+             del logo en PNG con fondo transparente si la tienes disponible -->
+        <a href="#hero" aria-label="Inicio Multivela Studio" style="display:flex;align-items:center;">
+            <img src="logo-multivela.jpg" alt="Multivela Studio"
+                style="height:42px;width:auto;filter:brightness(0) invert(1);" />
         </a>
 
         <!-- Links del menú (versión escritorio) -->
@@ -118,8 +122,8 @@
              │    fotografiado desde drone o render BIM a gran escala  │
              └─────────────────────────────────────────────────────────┘ -->
         <div class="hero-bg">
-            <img src="https://cdn.myportfolio.com/d0694c4d-1426-4b08-a571-70f049b2ca86/ca173e72-6419-40ae-8c05-47951940e210_rw_1920.png"
-                alt="Multivela Studio - Levantamiento BIM" onerror="this.src='img_bim.png'" loading="eager" />
+            <img src="hero-render.jpg" alt="Multivela Studio — Render arquitectónico proyecto comercial moderno"
+                loading="eager" />
         </div>
 
         <!-- Overlay oscuro (capa semitransparente sobre la imagen para que el texto sea legible) -->
@@ -274,9 +278,8 @@
                      │  Tamaño recomendado: 900 × 600 px               │
                      └─────────────────────────────────────────────────┘ -->
                 <div class="about-img-frame">
-                    <img src="https://cdn.myportfolio.com/d0694c4d-1426-4b08-a571-70f049b2ca86/ca173e72-6419-40ae-8c05-47951940e210_rw_1920.png"
-                        alt="Levantamiento arquitectónico BIM — Multivela Studio" loading="lazy"
-                        onerror="this.src='img_bim.png'" />
+                    <img src="proyecto-construccion.jpg" alt="Proyecto de construcción real en campo — Multivela Studio"
+                        loading="lazy" />
                 </div>
 
                 <!-- ┌─────────────────────────────────────────────────┐
@@ -288,9 +291,8 @@
                      │  Tamaño recomendado: 900 × 400 px               │
                      └─────────────────────────────────────────────────┘ -->
                 <div class="about-img-sub reveal d2">
-                    <img src="https://cdn-prod-ccv.adobe.com/LE3sZRw8Hno/image/LE3sZRw8Hno_poster.jpg"
-                        alt="Producción audiovisual Multivela Studio" loading="lazy"
-                        onerror="this.src='img_video.png'" />
+                    <img src="render-3d-camion.jpg" alt="Render 3D vehículo especializado — Multivela Studio"
+                        loading="lazy" />
                 </div>
             </div>
 
@@ -403,9 +405,9 @@
         <div class="portfolio-row row-full reveal">
             <div class="port-item" tabindex="0">
 
-                <!-- ▼▼▼ REEMPLAZA src CON TU IMAGEN DEL PROYECTO 1 ▼▼▼ -->
-                <img src="https://cdn.myportfolio.com/d0694c4d-1426-4b08-a571-70f049b2ca86/ca173e72-6419-40ae-8c05-47951940e210_rw_1920.png"
-                    alt="Levantamiento BIM bodega industrial Cali" loading="lazy" onerror="this.src='img_bim.png'" />
+                <!-- Proyecto 1: Render arquitectónico edificio comercial moderno -->
+                <img src="hero-render.jpg" alt="Render arquitectónico edificio comercial — Multivela Studio"
+                    loading="lazy" />
                 <!-- ▲▲▲ FIN DE IMAGEN PROYECTO 1 ▲▲▲ -->
 
                 <!-- Overlay con info que aparece al pasar el mouse -->
@@ -427,9 +429,10 @@
 
             <!-- PROYECTO 2 (izquierda) -->
             <div class="port-item" tabindex="0">
-                <!-- ▼▼▼ REEMPLAZA src CON TU IMAGEN DEL PROYECTO 2 ▼▼▼ -->
-                <img src="https://cdn.myportfolio.com/d0694c4d-1426-4b08-a571-70f049b2ca86/14d97101-5b7e-4d6d-9b18-a1bbf10064a0_rwc_18x0x2638x1347x4096.png"
-                    alt="Planimetría técnica proyecto arquitectónico" loading="lazy" onerror="this.src='img_bim.png'" />
+                <!-- Proyecto 2: Planos técnicos e ingeniería -->
+                <img src="disenio-tecnico.jpg"
+                    alt="Diseño técnico 2D/3D — vistas múltiples vehículo especializado — Multivela Studio"
+                    loading="lazy" />
                 <!-- ▲▲▲ FIN DE IMAGEN PROYECTO 2 ▲▲▲ -->
                 <div class="port-overlay">
                     <!-- MODIFICAR: Categoría y nombre del proyecto 2 -->
@@ -441,10 +444,9 @@
 
             <!-- PROYECTO 3 (derecha) -->
             <div class="port-item" tabindex="0">
-                <!-- ▼▼▼ REEMPLAZA src CON TU IMAGEN DEL PROYECTO 3 ▼▼▼ -->
-                <img src="https://cdn-prod-ccv.adobe.com/LE3sZRw8Hno/image/LE3sZRw8Hno_poster.jpg"
-                    alt="Video de producto Casio — Multivela Studio" loading="lazy"
-                    onerror="this.src='img_video.png'" />
+                <!-- Proyecto 3: Render 3D de vehículo especializado -->
+                <img src="render-3d-camion.jpg"
+                    alt="Render 3D vehículo especializado de alta precisión — Multivela Studio" loading="lazy" />
                 <!-- ▲▲▲ FIN DE IMAGEN PROYECTO 3 ▲▲▲ -->
                 <div class="port-overlay">
                     <!-- MODIFICAR: Categoría y nombre del proyecto 3 -->
@@ -466,12 +468,14 @@
                 <!-- ▼▼▼ REEMPLAZA src CON TU IMAGEN DEL PROYECTO 4 ▼▼▼
                      Puedes usar el archivo local img_drone.png o una foto real.
                      Ejemplo: src="proyecto-drone-bodega.jpg"              -->
-                <img src="img_drone.png" alt="Toma aérea con dron — proyecto industrial" loading="lazy" />
-                <!-- ▲▲▲ FIN DE IMAGEN PROYECTO 4 ▲▲▲ -->
+                <!-- Proyecto 4: Fabricación industrial / señalética en campo -->
+                <img src="fabricacion-industrial.jpg" alt="Fabricación de señalética industrial — Multivela Studio"
+                    loading="lazy" />
                 <div class="port-overlay">
                     <!-- MODIFICAR: Categoría y nombre del proyecto 4 -->
-                    <p class="port-cat">Drone · Aerial</p>
-                    <p class="port-title">Inspección Aérea Industrial</p>
+                    <p class="port-cat">Señalética · Fabricación · Metal</p>
+                    <p class="port-title">Señalética Industrial Metálica<br><span>Diseño, fabricación e
+                            instalación</span></p>
                 </div>
                 <span class="port-num">04 / 05</span>
             </div>
@@ -480,12 +484,13 @@
             <div class="port-item" tabindex="0">
                 <!-- ▼▼▼ REEMPLAZA src CON TU IMAGEN DEL PROYECTO 5 ▼▼▼
                      Ejemplo: src="sesion-fotografia-producto.jpg"         -->
-                <img src="img_product.png" alt="Fotografía de producto — sesión comercial" loading="lazy" />
-                <!-- ▲▲▲ FIN DE IMAGEN PROYECTO 5 ▲▲▲ -->
+                <!-- Proyecto 5: Construcción real en campo -->
+                <img src="proyecto-construccion.jpg" alt="Proyecto arquitectónico en campo — Multivela Studio"
+                    loading="lazy" />
                 <div class="port-overlay">
-                    <!-- MODIFICAR: Categoría y nombre del proyecto 5 -->
-                    <p class="port-cat">Fotografía · Producto</p>
-                    <p class="port-title">Sesión Comercial de Marca</p>
+                    <p class="port-cat">Arquitectura · Construcción · Levantamiento</p>
+                    <p class="port-title">Edificio Comercial en Campo<br><span>Levantamiento y documentación
+                            as-built</span></p>
                 </div>
                 <span class="port-num">05 / 05</span>
             </div>
@@ -494,12 +499,12 @@
             <div class="port-item" tabindex="0">
                 <!-- ▼▼▼ REEMPLAZA src CON TU IMAGEN DEL PROYECTO 6 ▼▼▼
                      Ejemplo: src="motion-graphics-proyecto.jpg"           -->
-                <img src="img_motion.png" alt="Motion graphics — pieza digital animada" loading="lazy" />
-                <!-- ▲▲▲ FIN DE IMAGEN PROYECTO 6 ▲▲▲ -->
+                <!-- Proyecto 6: Diseño técnico vistas múltiples -->
+                <img src="disenio-tecnico.jpg" alt="Diseño técnico 2D vistas múltiples — Multivela Studio"
+                    loading="lazy" />
                 <div class="port-overlay">
-                    <!-- MODIFICAR: Categoría y nombre del proyecto 6 -->
-                    <p class="port-cat">Motion · Digital · Señalética</p>
-                    <p class="port-title">Señalética 360° Campus</p>
+                    <p class="port-cat">BIM · Documentación · Revit</p>
+                    <p class="port-title">Documentación Técnica 360°<br><span>Plantas, cortes y perspectivas</span></p>
                 </div>
                 <span class="port-num">06 / 06</span>
             </div>
@@ -707,7 +712,11 @@
                  │         alt="Multivela Studio"                      │
                  │         style="height:32px;width:auto;" />          │
                  └─────────────────────────────────────────────────────┘ -->
-            <div class="footer-brand">MULTI<span>VELA</span> STUDIO</div>
+            <!-- Logo en el footer — misma imagen del logo, versión blanca -->
+            <div class="footer-brand">
+                <img src="logo-multivela.jpg" alt="Multivela Studio"
+                    style="height:34px;width:auto;filter:brightness(0) invert(1);" />
+            </div>
 
             <!-- Links de navegación en el footer -->
             <nav class="footer-nav" aria-label="Navegación del footer">

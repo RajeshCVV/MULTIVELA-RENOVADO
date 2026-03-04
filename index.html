@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ╔══════════════════════════════════════════════════════════════╗
+         ║  SEO — Título y descripción que aparecen en Google          ║
+         ║  MODIFICAR: Cambia el texto del <title> y del <content>     ║
+         ╚══════════════════════════════════════════════════════════════╝ -->
+    <title>Multivela Studio | Ingeniería Multimedia & Producción Audiovisual</title>
+    <meta name="description"
+        content="Multivela Studio — Estudio multidisciplinario en Colombia. BIM, modelado 3D, video corporativo, fotografía de producto, drones y motion graphics." />
+
+    <!-- ╔══════════════════════════════════════════════════════════════╗
+         ║  FAVICON — Ícono pequeño que aparece en la pestaña          ║
+         ║  MODIFICAR: Reemplaza este bloque por:                      ║
+         ║    <link rel="icon" href="logo.png" />                      ║
+         ║  Si tienes tu logo en formato PNG/ICO/SVG                   ║
+         ╚══════════════════════════════════════════════════════════════╝ -->
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Crect x='5' y='5' width='22' height='22' fill='none' stroke='%23fff' stroke-width='1.5'/%3E%3Cline x1='5' y1='16' x2='27' y2='16' stroke='%23fff' stroke-width='1'/%3E%3Cline x1='16' y1='5' x2='16' y2='27' stroke='%23fff' stroke-width='1'/%3E%3C/svg%3E" />
+    <!-- EJEMPLO con tu logo real:  <link rel="icon" href="logo-multivela.png" />  -->
+
+    <!-- ─── Google Fonts: Montserrat (se carga desde internet) ─── -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap"
+        rel="stylesheet" />
+
+    <!-- ─── Hoja de estilos CSS ─── -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         BARRA DE NAVEGACIÓN (NAVBAR)
+         Aparece fija en la parte superior; transparente al inicio y
+         oscura cuando el usuario hace scroll.
+         ══════════════════════════════════════════════════════════════════ -->
+    <nav id="navbar" role="navigation" aria-label="Navegación principal">
+
+        <!-- ┌─────────────────────────────────────────────────────────┐
+             │  LOGO — Cómo cambiarlo:                                 │
+             │                                                         │
+             │  OPCIÓN A (texto, diseño actual):                       │
+             │    Solo cambia el texto "MULTI" y "VELA" abajo.        │
+             │                                                         │
+             │  OPCIÓN B (imagen PNG/SVG — RECOMENDADO):               │
+             │    Reemplaza todo el <a class="nav-logo"> con esto:     │
+             │                                                         │
+             │    <a href="#hero" class="nav-logo">                    │
+             │      <img src="logo-multivela.png"                      │
+             │           alt="Multivela Studio"                        │
+             │           style="height:36px;width:auto;" />            │
+             │    </a>                                                  │
+             │                                                         │
+             │  IMPORTANTE: El logo debe tener fondo transparente      │
+             │  (PNG con canal alfa) para que se vea sobre el negro.   │
+             │  Altura recomendada: 36–44px.                           │
+             └─────────────────────────────────────────────────────────┘ -->
+        <a href="#hero" class="nav-logo" aria-label="Inicio Multivela Studio">
+            MULTI<span>VELA</span>
+        </a>
+
+        <!-- Links del menú (versión escritorio) -->
+        <ul class="nav-links" role="list">
+            <li><a href="#about">Nosotros</a></li>
+            <li><a href="#services">Servicios</a></li>
+            <li><a href="#portfolio">Portafolio</a></li>
+            <li><a href="#contact">Contacto</a></li>
+        </ul>
+
+        <!-- Botón "Cotizar Proyecto" en la barra de navegación -->
+        <a href="#contact" class="btn-ghost nav-cta-btn">
+            Cotizar Proyecto
+        </a>
+
+        <!-- Botón ≡ para abrir el menú en celular -->
+        <button id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Panel del menú en celular (se abre al tocar ≡) -->
+    <div id="mobile-menu" role="dialog" aria-label="Menú de navegación móvil">
+        <a href="#about">Nosotros</a>
+        <a href="#services">Servicios</a>
+        <a href="#portfolio">Portafolio</a>
+        <a href="#contact">Contacto</a>
+        <a href="#contact" class="btn-ghost" style="margin-top: 1rem; text-align:center;">Cotizar ↗</a>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         SECCIÓN HERO — Portada a pantalla completa
+         Es la primera imagen grande que ve el usuario al entrar.
+         ══════════════════════════════════════════════════════════════════ -->
+    <section id="hero" aria-label="Portada principal">
+
+        <!-- ┌─────────────────────────────────────────────────────────┐
+             │  IMAGEN DEL HERO (portada principal)                    │
+             │                                                         │
+             │  CÓMO CAMBIARLA:                                        │
+             │  1. Copia tu imagen dentro de esta carpeta              │
+             │     (MULTIVELA-RENOVADO)                                │
+             │  2. Reemplaza el src por el nombre de tu archivo:       │
+             │                                                         │
+             │     src="foto-portada.jpg"                              │
+             │                                                         │
+             │  RECOMENDACIÓN:                                         │
+             │  - Tamaño mínimo: 1920 × 1080 px                       │
+             │  - Formato: JPG o WebP (para carga rápida)              │
+             │  - La imagen ideal muestra un proyecto de la empresa    │
+             │    fotografiado desde drone o render BIM a gran escala  │
+             └─────────────────────────────────────────────────────────┘ -->
+        <div class="hero-bg">
+            <img src="https://cdn.myportfolio.com/d0694c4d-1426-4b08-a571-70f049b2ca86/ca173e72-6419-40ae-8c05-47951940e210_rw_1920.png"
+                alt="Multivela Studio - Levantamiento BIM" onerror="this.src='img_bim.png'" loading="eager" />
+        </div>
+
+        <!-- Overlay oscuro (capa semitransparente sobre la imagen para que el texto sea legible) -->
+        <div class="hero-overlay"></div>
+
+        <!-- Texto flotante sobre la imagen -->
+        <div class="hero-content">
+
+            <!-- Etiqueta pequeña sobre el título — MODIFICAR si quieres cambiar el texto -->
+            <p class="hero-eyebrow" id="hero-eyebrow">Estudio Multidisciplinario · Colombia</p>
+
+            <!-- ┌─────────────────────────────────────────────────────┐
+                 │  TÍTULO PRINCIPAL DEL HERO                          │
+                 │  MODIFICAR: Cambia el texto que quieras mostrar.    │
+                 │  El <em> pone la palabra en cursiva/inclinada.      │
+                 └─────────────────────────────────────────────────────┘ -->
+            <h1 class="hero-title" id="hero-title">
+                Ideas que<br><em>elevan</em><br>cada proyecto.
+            </h1>
+
+            <!-- Servicios resumidos debajo del título — MODIFICAR si quieres cambiar -->
+            <p class="hero-sub" id="hero-sub">
+                BIM · Renders · Video · Drones · Motion Graphics
+            </p>
+
+            <!-- Botones de llamada a la acción -->
+            <div class="hero-cta-row" id="hero-cta">
+                <a href="#portfolio" class="btn-solid">Ver Portafolio</a>
+                <a href="#contact" class="btn-ghost-light">Iniciar Proyecto →</a>
+            </div>
+        </div>
+
+        <!-- Indicador visual de scroll (línea animada abajo a la derecha) -->
+        <div class="hero-scroll-hint" aria-hidden="true">
+            <span class="scroll-line"></span>
+            <span class="scroll-label">Scroll</span>
+        </div>
+
+        <!-- Badge flotante con número de proyectos — MODIFICAR el número si cambia -->
+        <div class="hero-badge" aria-label="Más de 80 proyectos entregados">
+            <div class="hero-badge-num">+80</div>
+            <div class="hero-badge-label">Proyectos<br>entregados</div>
+        </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         TICKER (CINTA DESLIZANTE)
+         Texto que se mueve horizontalmente de forma infinita.
+         Para agregar o quitar servicios: duplica o elimina un <span>.
+         IMPORTANTE: El contenido debe estar duplicado (las dos mitades
+         iguales) para que el loop no tenga salto visual.
+         ══════════════════════════════════════════════════════════════════ -->
+    <div class="marquee-section" aria-hidden="true">
+        <div class="marquee-track" role="marquee">
+            <!-- Primera mitad -->
+            <span>BIM & Modelado 3D</span><span class="m-sep">—</span>
+            <span>Renders Arquitectónicos</span><span class="m-sep">—</span>
+            <span>Video Corporativo</span><span class="m-sep">—</span>
+            <span>Fotografía de Producto</span><span class="m-sep">—</span>
+            <span>Tomas con Dron</span><span class="m-sep">—</span>
+            <span>Motion Graphics</span><span class="m-sep">—</span>
+            <span>Señalética 360°</span><span class="m-sep">—</span>
+            <span>Identidad Visual</span><span class="m-sep">—</span>
+            <!-- Segunda mitad (copia exacta de la primera — necesario para el loop) -->
+            <span>BIM & Modelado 3D</span><span class="m-sep">—</span>
+            <span>Renders Arquitectónicos</span><span class="m-sep">—</span>
+            <span>Video Corporativo</span><span class="m-sep">—</span>
+            <span>Fotografía de Producto</span><span class="m-sep">—</span>
+            <span>Tomas con Dron</span><span class="m-sep">—</span>
+            <span>Motion Graphics</span><span class="m-sep">—</span>
+            <span>Señalética 360°</span><span class="m-sep">—</span>
+            <span>Identidad Visual</span><span class="m-sep">—</span>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         SECCIÓN NOSOTROS (ABOUT)
+         Diseño split-screen: texto a la izquierda / imagen a la derecha.
+         ══════════════════════════════════════════════════════════════════ -->
+    <section id="about" aria-label="Sobre Multivela Studio">
+        <div class="about-layout">
+
+            <!-- COLUMNA IZQUIERDA: Texto descriptivo de la empresa -->
+            <div class="about-text-col">
+                <div class="about-inner">
+                    <!-- Etiqueta de sección -->
+                    <p class="section-label reveal">Quiénes somos</p>
+
+                    <!-- Título con línea vertical decorativa -->
+                    <div class="accent-block reveal">
+                        <h2 class="section-title">
+                            Donde la <em>ingeniería</em><br>abraza la creatividad.
+                        </h2>
+                    </div>
+
+                    <!-- ┌─────────────────────────────────────────────┐
+                         │  TEXTOS DE "SOBRE NOSOTROS"                 │
+                         │  MODIFICAR: Reemplaza estos párrafos con    │
+                         │  la historia real de tu empresa.            │
+                         └─────────────────────────────────────────────┘ -->
+                    <p class="about-body reveal d1">
+                        <strong>Multivela Studio</strong> nació de la convicción de que los proyectos más
+                        poderosos surgen cuando la precisión técnica y la visión artística trabajan juntas.
+                        Somos un equipo multidisciplinario radicado en Colombia, especializados en transformar
+                        ideas complejas en experiencias visuales memorables.
+                    </p>
+                    <p class="about-body reveal d2">
+                        Desde el modelado BIM de alta precisión para proyectos de ingeniería, hasta la
+                        narrativa audiovisual de tus marcas, ejecutamos cada trabajo con el mismo nivel
+                        de exigencia y pasión por el detalle que nos define.
+                    </p>
+
+                    <!-- ┌─────────────────────────────────────────────┐
+                         │  ESTADÍSTICAS — MODIFICAR los números       │
+                         └─────────────────────────────────────────────┘ -->
+                    <div class="stats-grid reveal d3">
+                        <div class="stat-cell">
+                            <div class="stat-num">+80</div> <!-- Número de proyectos -->
+                            <div class="stat-lbl">Proyectos entregados</div>
+                        </div>
+                        <div class="stat-cell">
+                            <div class="stat-num">5+</div> <!-- Años de experiencia -->
+                            <div class="stat-lbl">Años de experiencia</div>
+                        </div>
+                        <div class="stat-cell">
+                            <div class="stat-num">8</div> <!-- Número de disciplinas -->
+                            <div class="stat-lbl">Disciplinas creativas</div>
+                        </div>
+                        <div class="stat-cell">
+                            <div class="stat-num">100%</div> <!-- Satisfacción -->
+                            <div class="stat-lbl">Satisfacción</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMNA DERECHA: Imágenes -->
+            <div class="about-img-col reveal">
+
+                <!-- ┌─────────────────────────────────────────────────┐
+                     │  IMAGEN GRANDE (superior derecha)               │
+                     │                                                 │
+                     │  CÓMO CAMBIARLA:                                │
+                     │  Copia tu imagen en esta carpeta y escribe      │
+                     │  el nombre en el src:                           │
+                     │                                                 │
+                     │    src="proyecto-bim-principal.jpg"             │
+                     │                                                 │
+                     │  Tamaño recomendado: 900 × 600 px               │
+                     └─────────────────────────────────────────────────┘ -->
+                <div class="about-img-frame">
+                    <img src="https://cdn.myportfolio.com/d0694c4d-1426-4b08-a571-70f049b2ca86/ca173e72-6419-40ae-8c05-47951940e210_rw_1920.png"
+                        alt="Levantamiento arquitectónico BIM — Multivela Studio" loading="lazy"
+                        onerror="this.src='img_bim.png'" />
+                </div>
+
+                <!-- ┌─────────────────────────────────────────────────┐
+                     │  IMAGEN PEQUEÑA (inferior derecha)              │
+                     │                                                 │
+                     │  CÓMO CAMBIARLA:                                │
+                     │    src="sesion-video-estudio.jpg"               │
+                     │                                                 │
+                     │  Tamaño recomendado: 900 × 400 px               │
+                     └─────────────────────────────────────────────────┘ -->
+                <div class="about-img-sub reveal d2">
+                    <img src="https://cdn-prod-ccv.adobe.com/LE3sZRw8Hno/image/LE3sZRw8Hno_poster.jpg"
+                        alt="Producción audiovisual Multivela Studio" loading="lazy"
+                        onerror="this.src='img_video.png'" />
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         SECCIÓN SERVICIOS
+         Grid de 6 tarjetas (3 columnas × 2 filas).
+         Para agregar un servicio: copia un .service-card completo.
+         Para eliminarlo: borra el <div class="service-card"> completo.
+         ══════════════════════════════════════════════════════════════════ -->
+    <section id="services" aria-label="Servicios de Multivela Studio">
+        <div class="section-header reveal">
+            <p class="section-label">Lo que hacemos</p>
+            <!-- MODIFICAR: Título de la sección de servicios -->
+            <h2 class="section-title">Nuestros <em>servicios</em></h2>
+        </div>
+
+        <div class="services-grid">
+
+            <!-- SERVICIO 01: BIM — MODIFICAR nombre y descripción -->
+            <div class="service-card reveal">
+                <div class="srv-num">01</div>
+                <div class="srv-name">BIM & Modelado 3D</div>
+                <p class="srv-desc">Levantamientos arquitectónicos, modelado en Revit y renders de alta fidelidad.
+                    Planos 2D as-built listos para coordinación y ejecución.</p>
+                <div class="srv-arrow">↗</div>
+            </div>
+
+            <!-- SERVICIO 02: Video — MODIFICAR nombre y descripción -->
+            <div class="service-card reveal d1">
+                <div class="srv-num">02</div>
+                <div class="srv-name">Video Corporativo</div>
+                <p class="srv-desc">Producción completa: guion, storyboard, filmación, motion graphics y postproducción.
+                    Masters en 16:9, 1:1 y 9:16 para redes, web y pauta.</p>
+                <div class="srv-arrow">↗</div>
+            </div>
+
+            <!-- SERVICIO 03: Drones — MODIFICAR nombre y descripción -->
+            <div class="service-card reveal d2">
+                <div class="srv-num">03</div>
+                <div class="srv-name">Tomas Aéreas con Dron</div>
+                <p class="srv-desc">Perspectivas únicas para proyectos inmobiliarios, eventos y campañas de marca.
+                    Cobertura pre, pro y pos del proyecto.</p>
+                <div class="srv-arrow">↗</div>
+            </div>
+
+            <!-- SERVICIO 04: Fotografía — MODIFICAR nombre y descripción -->
+            <div class="service-card reveal">
+                <div class="srv-num">04</div>
+                <div class="srv-name">Fotografía de Producto</div>
+                <p class="srv-desc">Rodaje tabletop y macro para beneficios y casos de uso. Iluminación de estudio y
+                    retoque premium para e-commerce y pauta digital.</p>
+                <div class="srv-arrow">↗</div>
+            </div>
+
+            <!-- SERVICIO 05: Motion — MODIFICAR nombre y descripción -->
+            <div class="service-card reveal d1">
+                <div class="srv-num">05</div>
+                <div class="srv-name">Motion Graphics</div>
+                <p class="srv-desc">Animaciones 2D/3D, intros corporativas y piezas para redes. Diseño visual que
+                    comunica y genera recordación instantánea de marca.</p>
+                <div class="srv-arrow">↗</div>
+            </div>
+
+            <!-- SERVICIO 06: Señalética — MODIFICAR nombre y descripción -->
+            <div class="service-card reveal d2">
+                <div class="srv-num">06</div>
+                <div class="srv-name">Señalética 360°</div>
+                <p class="srv-desc">Planimetría de evacuación, simbología y leyenda según normativa vigente. Impresión
+                    UV en acrílico y vinilo técnico, con instalación en campo.</p>
+                <div class="srv-arrow">↗</div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         SECCIÓN PORTAFOLIO — Galería editorial (3 filas)
+         ──────────────────────────────────────────────────────────────────
+         CÓMO REEMPLAZAR LAS IMÁGENES:
+         1. Copia tus fotos de proyectos dentro de esta carpeta
+            (MULTIVELA-RENOVADO)
+         2. En cada <img>, reemplaza el atributo src= por el nombre
+            de tu archivo.
+         3. También cambia el alt= con una descripción real del proyecto.
+         ══════════════════════════════════════════════════════════════════ -->
+    <section id="portfolio" aria-label="Portafolio de proyectos">
+
+        <div class="section-header reveal"
+            style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;">
+            <div>
+                <p class="section-label">Nuestro trabajo</p>
+                <!-- MODIFICAR: Título de la sección de portafolio -->
+                <h2 class="section-title">Proyectos que<br><em>hablan</em> por sí solos.</h2>
+            </div>
+            <!-- MODIFICAR: Link al portafolio externo (Adobe Portfolio, Behance, etc.) -->
+            <a href="https://multivelastudio.myportfolio.com/" target="_blank" rel="noopener" class="btn-ghost">
+                Ver portafolio completo ↗
+            </a>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════════════
+             FILA 1: Proyecto grande (ocupa todo el ancho)
+             Tamaño de imagen recomendado: 1920 × 840 px
+             ══════════════════════════════════════════════════════════ -->
+        <div class="portfolio-row row-full reveal">
+            <div class="port-item" tabindex="0">
+
+                <!-- ▼▼▼ REEMPLAZA src CON TU IMAGEN DEL PROYECTO 1 ▼▼▼ -->
+                <img src="https://cdn.myportfolio.com/d0694c4d-1426-4b08-a571-70f049b2ca86/ca173e72-6419-40ae-8c05-47951940e210_rw_1920.png"
+                    alt="Levantamiento BIM bodega industrial Cali" loading="lazy" onerror="this.src='img_bim.png'" />
+                <!-- ▲▲▲ FIN DE IMAGEN PROYECTO 1 ▲▲▲ -->
+
+                <!-- Overlay con info que aparece al pasar el mouse -->
+                <div class="port-overlay">
+                    <!-- MODIFICAR: Categoría del proyecto 1 -->
+                    <p class="port-cat">BIM · Ingeniería · Revit</p>
+                    <!-- MODIFICAR: Nombre y subtítulo del proyecto 1 -->
+                    <p class="port-title">Levantamiento Bodega Industrial<br><span>La Dolores, Cali, Valle</span></p>
+                </div>
+                <span class="port-num">01 / 05</span>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════════════
+             FILA 2: Dos proyectos lado a lado (50% cada uno)
+             Tamaño de imagen recomendado: 960 × 720 px cada una
+             ══════════════════════════════════════════════════════════ -->
+        <div class="portfolio-row row-half reveal d1">
+
+            <!-- PROYECTO 2 (izquierda) -->
+            <div class="port-item" tabindex="0">
+                <!-- ▼▼▼ REEMPLAZA src CON TU IMAGEN DEL PROYECTO 2 ▼▼▼ -->
+                <img src="https://cdn.myportfolio.com/d0694c4d-1426-4b08-a571-70f049b2ca86/14d97101-5b7e-4d6d-9b18-a1bbf10064a0_rwc_18x0x2638x1347x4096.png"
+                    alt="Planimetría técnica proyecto arquitectónico" loading="lazy" onerror="this.src='img_bim.png'" />
+                <!-- ▲▲▲ FIN DE IMAGEN PROYECTO 2 ▲▲▲ -->
+                <div class="port-overlay">
+                    <!-- MODIFICAR: Categoría y nombre del proyecto 2 -->
+                    <p class="port-cat">Planimetría · Documentación Técnica</p>
+                    <p class="port-title">Sistema de Blindaje Arquitectónico</p>
+                </div>
+                <span class="port-num">02 / 05</span>
+            </div>
+
+            <!-- PROYECTO 3 (derecha) -->
+            <div class="port-item" tabindex="0">
+                <!-- ▼▼▼ REEMPLAZA src CON TU IMAGEN DEL PROYECTO 3 ▼▼▼ -->
+                <img src="https://cdn-prod-ccv.adobe.com/LE3sZRw8Hno/image/LE3sZRw8Hno_poster.jpg"
+                    alt="Video de producto Casio — Multivela Studio" loading="lazy"
+                    onerror="this.src='img_video.png'" />
+                <!-- ▲▲▲ FIN DE IMAGEN PROYECTO 3 ▲▲▲ -->
+                <div class="port-overlay">
+                    <!-- MODIFICAR: Categoría y nombre del proyecto 3 -->
+                    <p class="port-cat">Video · Producto · Motion</p>
+                    <p class="port-title">Video Producto Casio<br><span>Tabletop macro · 16:9 / 1:1 / 9:16</span></p>
+                </div>
+                <span class="port-num">03 / 05</span>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════════════
+             FILA 3: Tres proyectos (33% cada uno)
+             Tamaño de imagen recomendado: 640 × 480 px cada una
+             ══════════════════════════════════════════════════════════ -->
+        <div class="portfolio-row row-third reveal d2">
+
+            <!-- PROYECTO 4 -->
+            <div class="port-item" tabindex="0">
+                <!-- ▼▼▼ REEMPLAZA src CON TU IMAGEN DEL PROYECTO 4 ▼▼▼
+                     Puedes usar el archivo local img_drone.png o una foto real.
+                     Ejemplo: src="proyecto-drone-bodega.jpg"              -->
+                <img src="img_drone.png" alt="Toma aérea con dron — proyecto industrial" loading="lazy" />
+                <!-- ▲▲▲ FIN DE IMAGEN PROYECTO 4 ▲▲▲ -->
+                <div class="port-overlay">
+                    <!-- MODIFICAR: Categoría y nombre del proyecto 4 -->
+                    <p class="port-cat">Drone · Aerial</p>
+                    <p class="port-title">Inspección Aérea Industrial</p>
+                </div>
+                <span class="port-num">04 / 05</span>
+            </div>
+
+            <!-- PROYECTO 5 -->
+            <div class="port-item" tabindex="0">
+                <!-- ▼▼▼ REEMPLAZA src CON TU IMAGEN DEL PROYECTO 5 ▼▼▼
+                     Ejemplo: src="sesion-fotografia-producto.jpg"         -->
+                <img src="img_product.png" alt="Fotografía de producto — sesión comercial" loading="lazy" />
+                <!-- ▲▲▲ FIN DE IMAGEN PROYECTO 5 ▲▲▲ -->
+                <div class="port-overlay">
+                    <!-- MODIFICAR: Categoría y nombre del proyecto 5 -->
+                    <p class="port-cat">Fotografía · Producto</p>
+                    <p class="port-title">Sesión Comercial de Marca</p>
+                </div>
+                <span class="port-num">05 / 05</span>
+            </div>
+
+            <!-- PROYECTO 6 -->
+            <div class="port-item" tabindex="0">
+                <!-- ▼▼▼ REEMPLAZA src CON TU IMAGEN DEL PROYECTO 6 ▼▼▼
+                     Ejemplo: src="motion-graphics-proyecto.jpg"           -->
+                <img src="img_motion.png" alt="Motion graphics — pieza digital animada" loading="lazy" />
+                <!-- ▲▲▲ FIN DE IMAGEN PROYECTO 6 ▲▲▲ -->
+                <div class="port-overlay">
+                    <!-- MODIFICAR: Categoría y nombre del proyecto 6 -->
+                    <p class="port-cat">Motion · Digital · Señalética</p>
+                    <p class="port-title">Señalética 360° Campus</p>
+                </div>
+                <span class="port-num">06 / 06</span>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         SECCIÓN TESTIMONIO — Cita de un cliente
+         MODIFICAR: Cambia la cita y el nombre del cliente real abajo.
+         ══════════════════════════════════════════════════════════════════ -->
+    <section id="testimonials" aria-label="Testimonios de clientes">
+        <div class="testimonial-inner">
+            <span class="testimonial-mark reveal" aria-hidden="true">"</span>
+
+            <!-- MODIFICAR: Texto de la cita -->
+            <blockquote class="testimonial-text reveal d1">
+                Multivela Studio transformó completamente la percepción visual de nuestra empresa.
+                Los renders BIM y el video corporativo que crearon para Neusoft Colombia superaron
+                todas nuestras expectativas — entregados listos para pauta digital desde el primer día.
+            </blockquote>
+
+            <!-- MODIFICAR: Nombre/cargo del cliente -->
+            <p class="testimonial-author reveal d2">— Cliente Referencia · Sector Tecnología Médica</p>
+
+            <div class="reveal d3" style="margin-top:3rem;text-align:center;">
+                <a href="#contact" class="btn-solid">Únete a nuestros clientes</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         SECCIÓN CONTACTO — Formulario de propuesta
+         Al enviar, abre el cliente de correo del usuario con todo
+         pre-llenado. Destino: multivelastudio@gmail.com
+         ══════════════════════════════════════════════════════════════════ -->
+    <section id="contact" aria-label="Formulario de contacto">
+        <div class="contact-layout">
+
+            <!-- COLUMNA IZQUIERDA: Datos de contacto -->
+            <div class="contact-info-col">
+                <div class="contact-info-inner">
+                    <div class="reveal">
+                        <p class="section-label">Hablemos</p>
+                        <div class="accent-block">
+                            <!-- MODIFICAR: Título de la sección de contacto -->
+                            <h2 class="section-title">Iniciemos<br>tu próximo<br><em>proyecto.</em></h2>
+                        </div>
+                    </div>
+
+                    <!-- MODIFICAR: Texto descriptivo bajo el título -->
+                    <p class="reveal d1" style="margin-top:2rem;color:var(--c-gray);font-size:0.9rem;line-height:1.8;">
+                        Cuéntanos tu idea. Nuestro equipo te responderá en menos de 24 horas
+                        con una propuesta personalizada lista para avanzar.
+                    </p>
+
+                    <!-- Datos de contacto — MODIFICAR: cambia email, WhatsApp, etc. -->
+                    <div class="reveal d2" style="margin-top:2.5rem;">
+
+                        <!-- EMAIL — MODIFICAR -->
+                        <div class="c-detail">
+                            <div class="c-detail-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                                </svg>
+                            </div>
+                            <div class="c-detail-body">
+                                <strong>Email</strong>
+                                multivelastudio@gmail.com <!-- ← MODIFICAR con tu email real -->
+                            </div>
+                        </div>
+
+                        <!-- WHATSAPP — MODIFICAR: cambia el número también en el botón flotante del final -->
+                        <div class="c-detail">
+                            <div class="c-detail-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+                                </svg>
+                            </div>
+                            <div class="c-detail-body">
+                                <strong>WhatsApp</strong>
+                                +57 318 8722595 <!-- ← MODIFICAR con tu número real -->
+                            </div>
+                        </div>
+
+                        <!-- UBICACIÓN — MODIFICAR -->
+                        <div class="c-detail">
+                            <div class="c-detail-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </div>
+                            <div class="c-detail-body">
+                                <strong>Ubicación</strong>
+                                Colombia · Servicio a todo el país <!-- ← MODIFICAR -->
+                            </div>
+                        </div>
+
+                        <!-- HORARIO — MODIFICAR -->
+                        <div class="c-detail">
+                            <div class="c-detail-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                            </div>
+                            <div class="c-detail-body">
+                                <strong>Horario</strong>
+                                Lun–Vie 8 am – 6 pm · Sáb 9 am – 1 pm <!-- ← MODIFICAR -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMNA DERECHA: Formulario -->
+            <div class="contact-form-col reveal d1">
+                <form id="contact-form" novalidate aria-label="Formulario de propuesta de proyecto">
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="f-name">Nombre completo *</label>
+                            <input type="text" id="f-name" name="name" placeholder="María García" required />
+                        </div>
+                        <div class="form-field">
+                            <label for="f-email">Correo electrónico *</label>
+                            <input type="email" id="f-email" name="email" placeholder="hola@empresa.com" required />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="f-company">Empresa / Organización</label>
+                            <input type="text" id="f-company" name="company" placeholder="Mi Empresa S.A.S." />
+                        </div>
+                        <div class="form-field">
+                            <label for="f-service">Servicio de interés *</label>
+                            <!-- MODIFICAR: Agrega o quita opciones del menú desplegable -->
+                            <select id="f-service" name="service" required>
+                                <option value="">Selecciona un servicio…</option>
+                                <option value="BIM y Modelado 3D">BIM & Modelado 3D</option>
+                                <option value="Video Corporativo">Video Corporativo</option>
+                                <option value="Tomas con Dron">Tomas con Dron</option>
+                                <option value="Fotografía de Producto">Fotografía de Producto</option>
+                                <option value="Motion Graphics">Motion Graphics</option>
+                                <option value="Señalética 360°">Señalética 360°</option>
+                                <option value="Paquete Completo">Paquete Completo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="f-message">Descripción del proyecto *</label>
+                        <textarea id="f-message" name="message" required
+                            placeholder="Cuéntanos sobre tu proyecto: ¿qué necesitas?, ¿cuándo lo necesitas?, ¿tienes referencias o un presupuesto estimado?"></textarea>
+                    </div>
+
+                    <!-- Botón de envío — abre el correo al hacer clic -->
+                    <button type="submit" class="btn-solid" style="width:100%;justify-content:center;">
+                        Enviar Propuesta
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </button>
+
+                    <p style="margin-top:0.75rem;font-size:0.68rem;color:var(--c-gray);text-align:center;">
+                        Al enviar se abrirá tu cliente de correo con la propuesta pre-llenada.
+                    </p>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         FOOTER — Pie de página
+         ══════════════════════════════════════════════════════════════════ -->
+    <footer role="contentinfo">
+
+        <!-- Fila superior: logo + links de navegación -->
+        <div class="footer-top">
+
+            <!-- ┌─────────────────────────────────────────────────────┐
+                 │  LOGO EN EL FOOTER — Igual que en la navbar         │
+                 │                                                     │
+                 │  OPCIÓN B (con imagen de logo):                     │
+                 │  Reemplaza el texto con:                            │
+                 │    <img src="logo-multivela.png"                    │
+                 │         alt="Multivela Studio"                      │
+                 │         style="height:32px;width:auto;" />          │
+                 └─────────────────────────────────────────────────────┘ -->
+            <div class="footer-brand">MULTI<span>VELA</span> STUDIO</div>
+
+            <!-- Links de navegación en el footer -->
+            <nav class="footer-nav" aria-label="Navegación del footer">
+                <a href="#about">Nosotros</a>
+                <a href="#services">Servicios</a>
+                <a href="#portfolio">Portafolio</a>
+                <a href="#contact">Contacto</a>
+            </nav>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="footer-bottom">
+            <!-- MODIFICAR: Año del copyright -->
+            <p class="footer-copy">© 2025 Multivela Studio · Todos los derechos reservados</p>
+
+            <!-- REDES SOCIALES — MODIFICAR los href con tus links reales -->
+            <div class="footer-socials">
+
+                <!-- LinkedIn — MODIFICAR href -->
+                <a href="https://linkedin.com/in/carenvargas" target="_blank" rel="noopener"
+                    aria-label="LinkedIn de Multivela Studio">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                        fill="currentColor" aria-hidden="true">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                </a>
+
+                <!-- Instagram — MODIFICAR href -->
+                <a href="https://instagram.com/multivela_studio" target="_blank" rel="noopener"
+                    aria-label="Instagram de Multivela Studio">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                </a>
+
+                <!-- YouTube — MODIFICAR href -->
+                <a href="https://youtube.com/@multivelastudio" target="_blank" rel="noopener"
+                    aria-label="YouTube de Multivela Studio">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.4 19.54C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+                        <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#000" />
+                    </svg>
+                </a>
+
+                <!-- WhatsApp — MODIFICAR: reemplaza 573188722595 con tu número (código de país + número sin espacios) -->
+                <a href="https://wa.me/573188722595?text=Hola%20Multivela%2C%20me%20interesa%20cotizar%20un%20proyecto"
+                    target="_blank" rel="noopener" aria-label="WhatsApp de Multivela Studio">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         BOTÓN FLOTANTE DE WHATSAPP (círculo verde esquina inferior derecha)
+         MODIFICAR: Reemplaza 573188722595 con tu número en formato
+         internacional: código de país (57 para Colombia) + número (sin +, sin espacios)
+         Ejemplo Colombia: 57 + 3001234567 → 573001234567
+         ══════════════════════════════════════════════════════════════════ -->
+    <a id="wa-float"
+        href="https://wa.me/573188722595?text=Hola%20Multivela%2C%20me%20interesa%20cotizar%20un%20proyecto"
+        target="_blank" rel="noopener" aria-label="Contactar por WhatsApp — Multivela Studio"
+        title="Chatea con nosotros en WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+        </svg>
+    </a>
+
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         SCRIPTS — Se cargan al final para mejor rendimiento
+         No es necesario modificar estos scripts.
+         ══════════════════════════════════════════════════════════════════ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+
+</body>
+
+</html>

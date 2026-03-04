@@ -1,0 +1,1444 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   MULTIVELA STUDIO — styles.css
+   ───────────────────────────────────────────────────────────────────────
+   Diseño inspirado en SV Group Real Estate: lujo oscuro, minimalismo,
+   tipografía Montserrat, sin bordes redondeados.
+
+   ESTRUCTURA DE ESTE ARCHIVO:
+   1. Variables de diseño (colores, tipografías, espaciados)
+   2. Reset global
+   3. Clases utilitarias (títulos, labels, botones, animaciones)
+   4. Navbar
+   5. Hero (portada)
+   6. Ticker (cinta deslizante)
+   7. About (nosotros)
+   8. Servicios
+   9. Portafolio
+   10. Testimonio
+   11. Contacto
+   12. Footer
+   13. Botón WhatsApp flotante
+   14. Responsive (tablet y móvil)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+
+/* ───────────────────────────────────────────────────────────────────────
+   1. VARIABLES DE DISEÑO
+   ───────────────────────────────────────────────────────────────────────
+   MODIFICAR aquí si quieres cambiar colores globalmente.
+   Cada variable empieza con "--c-" para los colores.
+   ─────────────────────────────────────────────────────────────────────── */
+:root {
+    /* COLORES PRINCIPALES */
+    --c-black: #000000;
+    /* Negro puro — fondos principales          */
+    --c-dark: #0a0a0a;
+    /* Negro casi puro — About, Portfolio       */
+    --c-dark2: #111111;
+    /* Gris muy oscuro — hover en tarjetas      */
+    --c-white: #ffffff;
+    /* Blanco puro — texto principal            */
+    --c-gray: #888888;
+    /* Gris medio — textos secundarios          */
+    --c-light: #f5f5f5;
+    /* Blanco suave (no usado actualmente)      */
+    --c-border: #222222;
+    /* Borde sutil oscuro — líneas divisoras    */
+    --c-border2: #333333;
+    /* Borde un poco más visible — formulario   */
+
+    /* TIPOGRAFÍA — no cambiar si quieres mantener el look Montserrat */
+    --font-main: 'Montserrat', sans-serif;
+
+    /* ESPACIADOS */
+    --nav-h: 72px;
+    /* Altura de la barra de navegación */
+    --sec-pad: 8rem 5%;
+    /* Padding de secciones en desktop  */
+    --sec-pad-m: 5rem 1.5rem;
+    /* Padding de secciones en móvil    */
+
+    /* ANIMACIONES */
+    --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --dur: 0.4s;
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────
+   2. RESET GLOBAL — No modificar
+   ─────────────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--c-black);
+    color: var(--c-white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────
+   3. CLASES UTILITARIAS
+   ─────────────────────────────────────────────────────────────────────── */
+
+/* Etiqueta de sección en MAYÚSCULAS (ej: "Lo que hacemos") */
+.section-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--c-gray);
+    margin-bottom: 1.2rem;
+}
+
+/* Título grande de sección */
+.section-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--c-white);
+}
+
+/* El <em> dentro de los títulos (palabra en cursiva y más tenue) */
+.section-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--c-white);
+    opacity: 0.6;
+}
+
+/* Encabezado de sección (contiene section-label + section-title) */
+.section-header {
+    padding: 0 5%;
+    margin-bottom: 4rem;
+}
+
+/* Bloque con línea vertical decorativa a la izquierda (estilo SV Group)
+   Usado en About y Contacto */
+.accent-block {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.accent-block::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.25em;
+    bottom: 0.25em;
+    width: 1px;
+    background: var(--c-white);
+    opacity: 0.3;
+}
+
+
+/* ─── BOTONES ─────────────────────────────────────────────────────────── */
+
+/* Botón sólido: fondo blanco, texto negro (hover: se vacía) */
+.btn-solid {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 2.2rem;
+    background: var(--c-white);
+    color: var(--c-black);
+    font-family: var(--font-main);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 1px solid var(--c-white);
+    cursor: pointer;
+    transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.btn-solid:hover {
+    background: transparent;
+    color: var(--c-white);
+}
+
+/* Botón ghost oscuro: solo borde blanco, fondo transparente */
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 2.2rem;
+    background: transparent;
+    color: var(--c-white);
+    font-family: var(--font-main);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.btn-ghost:hover {
+    border-color: var(--c-white);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Botón ghost claro: para usar sobre imágenes oscuras (hero) */
+.btn-ghost-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 2.2rem;
+    background: transparent;
+    color: var(--c-white);
+    font-family: var(--font-main);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.btn-ghost-light:hover {
+    border-color: var(--c-white);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* ─── ANIMACIONES REVEAL (aparecen al hacer scroll) ──────────────────── */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Delays escalonados: .d1, .d2, .d3, .d4 */
+.d1.reveal {
+    transition-delay: 0.12s;
+}
+
+.d2.reveal {
+    transition-delay: 0.24s;
+}
+
+.d3.reveal {
+    transition-delay: 0.36s;
+}
+
+.d4.reveal {
+    transition-delay: 0.48s;
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────
+   4. NAVBAR
+   ─────────────────────────────────────────────────────────────────────── */
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    background: transparent;
+    /* Transparente sobre el hero */
+    transition: background var(--dur) var(--ease), backdrop-filter var(--dur) var(--ease);
+}
+
+/* Estado al hacer scroll: se oscurece */
+#navbar.scrolled {
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--c-border);
+}
+
+/* ─── LOGO EN LA NAVBAR ─────────────────────────────────────────────────
+   MODIFICAR: Si usas una imagen de logo, agrega aquí el estilo:
+     .nav-logo img { height: 36px; width: auto; display: block; }
+   ─────────────────────────────────────────────────────────────────────── */
+.nav-logo {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--c-white);
+    transition: opacity var(--dur);
+}
+
+.nav-logo span {
+    font-weight: 300;
+}
+
+/* "VELA" en peso ligero */
+.nav-logo:hover {
+    opacity: 0.7;
+}
+
+/* Links del menú (versión desktop) */
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    transition: color var(--dur);
+    position: relative;
+}
+
+/* Línea animada debajo del link al pasar el mouse */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    right: 100%;
+    height: 1px;
+    background: var(--c-white);
+    transition: right var(--dur) var(--ease);
+}
+
+.nav-links a:hover {
+    color: var(--c-white);
+}
+
+.nav-links a:hover::after {
+    right: 0;
+}
+
+/* Botón CTA en la navbar */
+.nav-cta-btn {
+    font-size: 0.62rem !important;
+    padding: 0.6rem 1.4rem !important;
+}
+
+/* Botón hamburger (visible solo en móvil) */
+#hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+#hamburger span {
+    display: block;
+    width: 22px;
+    height: 1px;
+    background: var(--c-white);
+    transition: transform var(--dur) var(--ease), opacity var(--dur);
+}
+
+/* Animación del hamburger cuando está abierto */
+#hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+}
+
+#hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+#hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* Panel del menú móvil (cubre toda la pantalla) */
+#mobile-menu {
+    position: fixed;
+    inset: 0;
+    background: var(--c-black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--dur) var(--ease);
+}
+
+#mobile-menu.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#mobile-menu a {
+    font-size: 1.5rem;
+    font-weight: 200;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--c-white);
+    transition: opacity var(--dur);
+}
+
+#mobile-menu a:hover {
+    opacity: 0.5;
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────
+   5. HERO — Portada a pantalla completa
+   ─────────────────────────────────────────────────────────────────────── */
+#hero {
+    position: relative;
+    height: 100svh;
+    /* 100% del alto de la pantalla */
+    min-height: 600px;
+    overflow: hidden;
+}
+
+/* Imagen de fondo (ocupa todo el hero) */
+.hero-bg {
+    position: absolute;
+    inset: 0;
+}
+
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    /* Efecto Ken Burns: zoom suave infinito */
+    animation: heroZoom 12s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.04);
+    }
+}
+
+/* Capa oscura semitransparente sobre la imagen (mejora la legibilidad del texto) */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.35) 0%,
+            rgba(0, 0, 0, 0.55) 50%,
+            rgba(0, 0, 0, 0.75) 100%);
+}
+
+/* Contenedor del texto del hero (flotante sobre la imagen) */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* Texto pegado a la parte inferior */
+    padding: 0 5% 9%;
+    max-width: 900px;
+}
+
+/* Texto pequeño sobre el título del hero */
+.hero-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 1.5rem;
+}
+
+/* Título principal del hero */
+.hero-title {
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 200;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--c-white);
+    margin-bottom: 1.5rem;
+}
+
+.hero-title em {
+    font-style: italic;
+    font-weight: 300;
+}
+
+/* Subtítulo del hero (servicios en una línea) */
+.hero-sub {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 2.5rem;
+}
+
+/* Fila de botones del hero */
+.hero-cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Indicador de scroll (línea vertical animada, esquina inferior derecha) */
+.hero-scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 2;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.4);
+    display: block;
+    animation: scrollLine 2s ease-in-out infinite;
+    transform-origin: top;
+}
+
+@keyframes scrollLine {
+    0% {
+        transform: scaleY(0);
+        transform-origin: top;
+        opacity: 1;
+    }
+
+    50% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleY(1);
+        opacity: 0;
+    }
+}
+
+.scroll-label {
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    writing-mode: vertical-rl;
+}
+
+/* Badge flotante con número de proyectos (esquina derecha del hero) */
+.hero-badge {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.3);
+    min-width: 120px;
+}
+
+.hero-badge-num {
+    font-size: 2.2rem;
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.hero-badge-label {
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 0.5rem;
+    line-height: 1.5;
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────
+   6. TICKER — Cinta de texto deslizante
+   ─────────────────────────────────────────────────────────────────────── */
+.marquee-section {
+    overflow: hidden;
+    border-top: 1px solid var(--c-border);
+    border-bottom: 1px solid var(--c-border);
+    padding: 1.2rem 0;
+    background: var(--c-dark);
+}
+
+.marquee-track {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 35s linear infinite;
+    width: max-content;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.marquee-track span {
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    padding: 0 2rem;
+}
+
+.marquee-track .m-sep {
+    color: rgba(255, 255, 255, 0.2);
+    padding: 0 0.5rem;
+}
+
+/* El ticker se pausa cuando el mouse está encima */
+.marquee-section:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────
+   7. ABOUT — Sección nosotros (split-screen oscuro)
+   ─────────────────────────────────────────────────────────────────────── */
+#about {
+    background: var(--c-dark);
+}
+
+/* Layout: texto izquierda | imagen derecha */
+.about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 700px;
+}
+
+/* Columna de texto (izquierda) */
+.about-text-col {
+    display: flex;
+    align-items: center;
+    padding: var(--sec-pad);
+    border-right: 1px solid var(--c-border);
+}
+
+.about-inner {
+    max-width: 520px;
+}
+
+/* Párrafos del about */
+.about-body {
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.85;
+    color: rgba(255, 255, 255, 0.65);
+    margin-top: 1.2rem;
+}
+
+/* Grid de estadísticas (2×2) */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 3rem;
+    border-top: 1px solid var(--c-border);
+    border-left: 1px solid var(--c-border);
+}
+
+.stat-cell {
+    padding: 1.8rem 1.5rem;
+    border-right: 1px solid var(--c-border);
+    border-bottom: 1px solid var(--c-border);
+}
+
+.stat-num {
+    font-size: 2rem;
+    font-weight: 200;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.stat-lbl {
+    font-size: 0.62rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--c-gray);
+    margin-top: 0.5rem;
+}
+
+/* Columna de imagen (derecha) */
+.about-img-col {
+    position: relative;
+    overflow: hidden;
+}
+
+.about-img-frame {
+    height: 70%;
+    overflow: hidden;
+}
+
+.about-img-frame img {
+    transition: transform 0.8s var(--ease);
+}
+
+.about-img-col:hover .about-img-frame img {
+    transform: scale(1.04);
+}
+
+/* Imagen pequeña (inferior) */
+.about-img-sub {
+    height: 30%;
+    overflow: hidden;
+    border-top: 1px solid var(--c-border);
+}
+
+.about-img-sub img {
+    transition: transform 0.8s var(--ease);
+}
+
+.about-img-col:hover .about-img-sub img {
+    transform: scale(1.03);
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────
+   8. SERVICIOS
+   ─────────────────────────────────────────────────────────────────────── */
+#services {
+    background: var(--c-black);
+    padding: var(--sec-pad);
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#services .section-header {
+    margin-bottom: 3rem;
+}
+
+/* Grid 3×2 de tarjetas de servicio */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--c-border);
+    border-left: 1px solid var(--c-border);
+}
+
+/* Tarjeta de servicio individual */
+.service-card {
+    padding: 3rem 2.5rem;
+    border-right: 1px solid var(--c-border);
+    border-bottom: 1px solid var(--c-border);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: background var(--dur) var(--ease);
+}
+
+/* Línea decorativa superior que aparece al hover */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--c-white);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s var(--ease);
+}
+
+.service-card:hover::before {
+    transform: scaleX(1);
+}
+
+.service-card:hover {
+    background: var(--c-dark2);
+}
+
+/* Número del servicio (01, 02...) */
+.srv-num {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--c-gray);
+}
+
+/* Nombre del servicio */
+.srv-name {
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: var(--c-white);
+    line-height: 1.3;
+}
+
+/* Descripción del servicio */
+.srv-desc {
+    font-size: 0.82rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.5);
+    flex: 1;
+}
+
+/* Flecha ↗ que aparece al hacer hover en la tarjeta */
+.srv-arrow {
+    font-size: 1.2rem;
+    color: var(--c-white);
+    opacity: 0;
+    transform: translate(-8px, 8px);
+    transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+    align-self: flex-end;
+}
+
+.service-card:hover .srv-arrow {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────
+   9. PORTAFOLIO — Galería editorial (3 filas)
+   ─────────────────────────────────────────────────────────────────────── */
+#portfolio {
+    background: var(--c-dark);
+    padding: var(--sec-pad);
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#portfolio .section-header {
+    padding: 0 5%;
+    margin-bottom: 3rem;
+}
+
+/* Filas de la galería */
+.portfolio-row {
+    display: flex;
+    gap: 2px;
+}
+
+/* Fila 1: proyecto a ancho completo */
+.row-full {
+    margin-bottom: 2px;
+}
+
+.row-full .port-item {
+    aspect-ratio: 16/7;
+}
+
+/* Fila 2: dos proyectos al 50% */
+.row-half {
+    margin-bottom: 2px;
+}
+
+.row-half .port-item {
+    flex: 1;
+    aspect-ratio: 4/3;
+}
+
+/* Fila 3: tres proyectos al 33% */
+.row-third .port-item {
+    flex: 1;
+    aspect-ratio: 4/3;
+}
+
+/* Ítem individual del portafolio */
+.port-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Zoom de la imagen al pasar el mouse */
+.port-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease);
+}
+
+.port-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Overlay oscuro con info del proyecto (aparece al hover) */
+.port-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem 2.2rem;
+    opacity: 0;
+    transition: opacity var(--dur) var(--ease);
+}
+
+.port-item:hover .port-overlay {
+    opacity: 1;
+}
+
+/* Categoría del proyecto (texto pequeño en el overlay) */
+.port-cat {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 0.4rem;
+}
+
+/* Nombre del proyecto en el overlay */
+.port-title {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--c-white);
+    line-height: 1.4;
+}
+
+.port-title span {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    font-weight: 300;
+}
+
+/* Número del proyecto (esquina superior derecha) */
+.port-num {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────
+   10. TESTIMONIO
+   ─────────────────────────────────────────────────────────────────────── */
+#testimonials {
+    background: var(--c-black);
+    padding: var(--sec-pad);
+}
+
+.testimonial-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Comilla decorativa grande */
+.testimonial-mark {
+    display: block;
+    font-size: 8rem;
+    font-weight: 200;
+    line-height: 0.6;
+    color: rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+    font-family: Georgia, serif;
+}
+
+/* Texto de la cita */
+.testimonial-text {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 200;
+    line-height: 1.75;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+}
+
+/* Nombre del autor de la cita */
+.testimonial-author {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--c-gray);
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────
+   11. CONTACTO — Split-screen: info oscura | formulario
+   ─────────────────────────────────────────────────────────────────────── */
+#contact {
+    background: var(--c-dark);
+    min-height: 600px;
+}
+
+/* Layout: info izquierda | formulario derecha */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 700px;
+}
+
+/* Columna izquierda (más oscura) */
+.contact-info-col {
+    background: var(--c-black);
+    display: flex;
+    align-items: center;
+    padding: var(--sec-pad);
+    border-right: 1px solid var(--c-border);
+}
+
+.contact-info-inner {
+    max-width: 420px;
+}
+
+/* Filas de datos de contacto */
+.c-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--c-border);
+}
+
+.c-detail-icon {
+    color: var(--c-gray);
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.c-detail-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+.c-detail-body strong {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--c-white);
+}
+
+/* Columna derecha: formulario */
+.contact-form-col {
+    display: flex;
+    align-items: center;
+    padding: var(--sec-pad);
+}
+
+/* Formulario */
+#contact-form {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+/* Labels del formulario */
+.form-field label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--c-gray);
+}
+
+/* Inputs, selects y textarea del formulario */
+.form-field input,
+.form-field select,
+.form-field textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--c-border2);
+    /* Solo línea inferior (estilo minimalista) */
+    color: var(--c-white);
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    font-weight: 300;
+    padding: 0.75rem 0;
+    outline: none;
+    transition: border-color var(--dur) var(--ease);
+    border-radius: 0;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+/* Al hacer focus en el campo, la línea se vuelve blanca */
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-bottom-color: var(--c-white);
+}
+
+/* Opciones del select */
+.form-field select option {
+    background: #111;
+    color: var(--c-white);
+}
+
+/* Textarea: altura mínima */
+.form-field textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.6;
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────
+   12. FOOTER
+   ─────────────────────────────────────────────────────────────────────── */
+footer {
+    background: var(--c-black);
+    padding: 4rem 5%;
+    border-top: 1px solid var(--c-border);
+}
+
+/* Fila superior: logo + links */
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+/* ─── LOGO EN EL FOOTER ─────────────────────────────────────────────────
+   MODIFICAR: Si usas imagen de logo:
+     .footer-brand img { height: 32px; width: auto; }
+   ─────────────────────────────────────────────────────────────────────── */
+.footer-brand {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--c-white);
+}
+
+.footer-brand span {
+    font-weight: 300;
+}
+
+/* Links de navegación en el footer */
+.footer-nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-nav a {
+    font-size: 0.62rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    transition: color var(--dur);
+}
+
+.footer-nav a:hover {
+    color: var(--c-white);
+}
+
+/* Línea divisora horizontal */
+.footer-divider {
+    height: 1px;
+    background: var(--c-border);
+    margin-bottom: 2rem;
+}
+
+/* Fila inferior: copyright + redes */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+/* Texto de copyright */
+.footer-copy {
+    font-size: 0.68rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* Íconos de redes sociales */
+.footer-socials {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.footer-socials a {
+    color: rgba(255, 255, 255, 0.4);
+    transition: color var(--dur);
+    display: flex;
+    align-items: center;
+}
+
+.footer-socials a:hover {
+    color: var(--c-white);
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────
+   13. BOTÓN FLOTANTE DE WHATSAPP
+   ─────────────────────────────────────────────────────────────────────── */
+#wa-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 990;
+    width: 52px;
+    height: 52px;
+    background: #25D366;
+    /* Verde oficial de WhatsApp */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+    transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+#wa-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
+}
+
+#wa-float svg {
+    width: 26px;
+    height: 26px;
+    fill: #fff;
+}
+
+
+/* ───────────────────────────────────────────────────────────────────────
+   14. RESPONSIVE — Tablet (≤ 1024px) y Móvil (≤ 640px)
+   No es necesario modificar estas secciones normalmente.
+   ─────────────────────────────────────────────────────────────────────── */
+
+/* TABLET */
+@media (max-width: 1024px) {
+
+    /* Ocultar links y CTA del menú desktop */
+    .nav-links,
+    .nav-cta-btn {
+        display: none;
+    }
+
+    #hamburger {
+        display: flex;
+    }
+
+    /* About: apilado vertical */
+    .about-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .about-img-col {
+        height: 55vw;
+        border-right: none;
+        border-top: 1px solid var(--c-border);
+    }
+
+    .about-img-frame {
+        height: 65%;
+    }
+
+    .about-img-sub {
+        height: 35%;
+    }
+
+    .about-text-col {
+        border-right: none;
+        padding: var(--sec-pad-m);
+    }
+
+    /* Servicios: 2 columnas */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Portafolio: columnas apiladas */
+    .row-half {
+        flex-direction: column;
+    }
+
+    .row-half .port-item {
+        aspect-ratio: 16/9;
+    }
+
+    .row-third {
+        flex-direction: column;
+    }
+
+    .row-third .port-item {
+        aspect-ratio: 16/9;
+    }
+
+    /* Contacto: apilado vertical */
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info-col {
+        border-right: none;
+        border-bottom: 1px solid var(--c-border);
+        padding: var(--sec-pad-m);
+    }
+
+    .contact-form-col {
+        padding: var(--sec-pad-m);
+    }
+}
+
+/* MÓVIL */
+@media (max-width: 640px) {
+    :root {
+        --sec-pad: 5rem 1.5rem;
+    }
+
+    /* Hero mobile */
+    .hero-content {
+        padding: 0 1.5rem 7rem;
+    }
+
+    .hero-badge {
+        display: none;
+    }
+
+    .hero-cta-row {
+        flex-direction: column;
+    }
+
+    .hero-cta-row .btn-solid,
+    .hero-cta-row .btn-ghost-light {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* About: estadísticas en 2 columnas */
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Servicios: 1 columna */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Formulario: 1 columna */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer mobile */
+    .footer-top {
+        flex-direction: column;
+    }
+
+    .footer-nav {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Portafolio: una columna */
+    .portfolio-row {
+        flex-direction: column;
+    }
+
+    .row-full .port-item,
+    .row-half .port-item,
+    .row-third .port-item {
+        aspect-ratio: 4/3;
+    }
+
+    /* Ticker */
+    .marquee-track span {
+        padding: 0 1.2rem;
+    }
+}

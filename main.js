@@ -242,4 +242,123 @@
         });
     });
 
+    /* ══════════════════════════════════════════════════════════════════
+       CHATBOT IA EXPERTO - LÓGICA FRONTEND
+       ══════════════════════════════════════════════════════════════════ */
+    const chatBtn = document.getElementById('ai-chat-btn');
+    const chatWindow = document.getElementById('ai-chat-window');
+    const chatClose = document.getElementById('ai-chat-close');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const chatMessages = document.getElementById('chat-messages');
+
+    // URL del Google Apps Script (Web App) que configuraste
+    const AI_API_URL = "https://script.google.com/macros/s/AKfycbyOrcIu3RR5EYgodZsAE4kX2wZmiFvfQ_rn2LFYV7cfCTQaIbRi5YiECKztLO6nRpzraQ/exec";
+
+    // Abrir/Cerrar Chat
+    if (chatBtn && chatWindow && chatClose) {
+        chatBtn.addEventListener('click', () => {
+            chatWindow.classList.toggle('chat-hidden');
+            const isHidden = chatWindow.classList.contains('chat-hidden');
+            chatBtn.setAttribute('aria-expanded', !isHidden);
+            if (!isHidden) {
+                setTimeout(() => chatInput.focus(), 300);
+            }
+        });
+
+        chatClose.addEventListener('click', () => {
+            chatWindow.classList.add('chat-hidden');
+            chatBtn.setAttribute('aria-expanded', 'false');
+        });
+    }
+
+    // Helper para agregar mensajes a la UI
+    function appendMessage(text, sender) {
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('chat-msg', sender === 'user' ? 'user-msg' : 'bot-msg');
+
+        // Convertir URLs en hipervínculos clickeables de forma segura (simple regex)
+        let formattedText = text.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">Ver enlace ↗</a>');
+        // Convertir saltos de línea en <br>
+        formattedText = formattedText.replace(/\n/g, '<br>');
+
+        msgDiv.innerHTML = formattedText;
+        chatMessages.appendChild(msgDiv);
+
+        // Auto-scroll al fondo
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Añadir indicador de escribiendo visual
+    function showTypingIndicator() {
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'typing-indicator';
+        typingDiv.id = 'typing-indicator';
+        typingDiv.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+        chatMessages.appendChild(typingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Eliminar indicador de escribiendo
+    function hideTypingIndicator() {
+        const typingDiv = document.getElementById('typing-indicator');
+        if (typingDiv) {
+            typingDiv.remove();
+        }
+    }
+
+    // Lógica para enviar el mensaje a la IA
+    async function sendMessage() {
+        const message = chatInput.value.trim();
+        if (!message) return;
+
+        // 1. Mostrar mensaje del usuario
+        appendMessage(message, 'user');
+        chatInput.value = '';
+        chatInput.disabled = true; // Bloquear input temporalmente
+        chatSend.style.opacity = '0.5';
+
+        // 2. Mostrar que la IA está escribiendo
+        showTypingIndicator();
+
+        try {
+            // 3. Petición POST al Servidor Apps Script
+            const response = await fetch(AI_API_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8", // text/plain soluciona problemas de CORS con Apps Script
+                },
+                body: JSON.stringify({
+                    mensaje: message
+                })
+            });
+
+            const data = await response.json();
+
+            // 4. Ocultar indicador y mostrar la respuesta
+            hideTypingIndicator();
+            appendMessage(data.respuesta || "Lo siento, tuve un micro-corte. ¿Me lo repites?", 'bot');
+
+        } catch (error) {
+            console.error("Error AI Chat:", error);
+            hideTypingIndicator();
+            appendMessage("Lo siento, mis circuitos están ocupados right now. Da clic en nuestro [botón de WhatsApp] para atención humana inmediata.", 'bot');
+        } finally {
+            chatInput.disabled = false;
+            chatSend.style.opacity = '1';
+            chatInput.focus();
+        }
+    }
+
+    // Enviar con botón o tecla Enter
+    if (chatSend && chatInput) {
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    }
+
 })();

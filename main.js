@@ -277,9 +277,24 @@
         const msgDiv = document.createElement('div');
         msgDiv.classList.add('chat-msg', sender === 'user' ? 'user-msg' : 'bot-msg');
 
-        // Convertir URLs en hipervínculos clickeables de forma segura (simple regex)
-        let formattedText = text.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">Ver enlace ↗</a>');
-        // Convertir saltos de línea en <br>
+        let formattedText = text;
+
+        // 1. Negritas de Markdown
+        formattedText = formattedText.replace(/\*\*([^\*]+)\*\*/g, '<strong>$1</strong>');
+
+        // 2. Enlaces Markdown: [Texto](URL)
+        formattedText = formattedText.replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1 ↗</a>');
+
+        // 3. URLs sueltas (saltándose las que ya están convertidas en HTML)
+        formattedText = formattedText.replace(/(^|\s)(https?:\/\/[a-zA-Z0-9\-\.\/\?\&\=\_]+)/g, function (match, space, url) {
+            let lastChar = url.slice(-1);
+            if (lastChar === '.' || lastChar === ',') {
+                return space + '<a href="' + url.slice(0, -1) + '" target="_blank" rel="noopener noreferrer">Ver formulario ↗</a>' + lastChar;
+            }
+            return space + '<a href="' + url + '" target="_blank" rel="noopener noreferrer">Ver formulario ↗</a>';
+        });
+
+        // 4. Saltos de línea
         formattedText = formattedText.replace(/\n/g, '<br>');
 
         msgDiv.innerHTML = formattedText;
